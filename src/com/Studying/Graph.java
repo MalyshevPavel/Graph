@@ -1,6 +1,7 @@
 package com.Studying;
 
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Graph {
@@ -25,7 +26,6 @@ public class Graph {
     private ArrayList<Edge> currentEdgePath;
     private ArrayList<Edge> minEdgePath;
 
-    private static final int INF = Integer.MAX_VALUE;
 
     private int getInt(FileReader reader) throws Exception {
         int Int = 0;
@@ -41,6 +41,10 @@ public class Graph {
                 if ((c >= '0') && (c <= '9'))
                 {
                     break;
+                }
+                else if (c != ' ' && c!= '\n'){
+                    System.out.println("Неверный формат ввода");
+                    throw new IOException();
                 }
             }
         }
@@ -86,7 +90,7 @@ public class Graph {
                     next[i][j] = j;
                 }
                 else {
-                    distances[i][j] = INF;
+                    distances[i][j] = 1000;
                     next[i][j] = -1;
                 }
             }
