@@ -124,9 +124,7 @@ public class Graph {
                 currentEdgePath.add(new Edge(v1, v2));
             }
         }
-        if (visited == false) {
-            System.exit(-1);
-        }
+
     }
 
     private int goToVertex(int from, int to) {
@@ -162,7 +160,9 @@ public class Graph {
             visitedEdges[i] = 0;
         }
 
-        allEdgesShortestPath(0);
+        for (int i = 0; i < verticesCount; i++){
+            allEdgesShortestPath(i);
+        }
 
         for (Edge e : minEdgePath) {
             System.out.println(e.v1 + " " + e.v2);
